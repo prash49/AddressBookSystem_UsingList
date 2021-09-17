@@ -10,8 +10,8 @@ public class AddressBookMain {
         boolean quit = false;
         while (!quit) {
             System.out.println("Enter 0 to quit the AddressBook system ");
-            System.out.println("Enter 1 to Print contacts");
-            System.out.println("enter 2 to add New contacts");
+            System.out.println("Enter 1 to add New contacts");
+            System.out.println("enter 2 to  display contacts");
             int action = scanner.nextInt();
             switch (action) {
                 case 0:
@@ -19,10 +19,10 @@ public class AddressBookMain {
                     quit = true;
                     break;
                 case 1:
-                    addressBook.printContacts();
+                    addNewContact();
                     break;
                 case 2:
-                    addNewContact();
+                    addressBook.printContacts();
                     break;
             }
         }
