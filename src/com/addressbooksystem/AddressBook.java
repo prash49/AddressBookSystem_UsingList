@@ -11,12 +11,28 @@ public class AddressBook {
         this.myContacts = new ArrayList<ContactBook>();
     }
 
+
     public boolean addNewContact(ContactBook contact) {
         if (findContact(contact.getFirstName()) > 0) {
             System.out.println("Contact is already on List");
         }
         myContacts.add(contact);
         return true;
+    }
+
+    public boolean updateContact(ContactBook oldContact, ContactBook newContact) {
+        int foundPosition = findContact(oldContact);
+        if (foundPosition < 0) {
+            System.out.println(oldContact.getFirstName() + " was not found in the list");
+            return false;
+        }
+        this.myContacts.set(foundPosition, newContact);
+        System.out.println(oldContact.getFirstName() + ", was replaced with " + newContact.getFirstName());
+        return true;
+    }
+
+    private int findContact(ContactBook contact) {
+        return this.myContacts.indexOf(contact);
     }
 
     private int findContact(String firstName) {
@@ -28,6 +44,22 @@ public class AddressBook {
         }
         return -1;
     }
+
+    public String queryContact(ContactBook contact) {
+        if (findContact(contact) >= 0) {
+            return contact.getFirstName();
+        }
+        return null;
+    }
+
+    public ContactBook queryContact(String searchName) {
+        int position = findContact(searchName);
+        if (position >= 0) {
+            return this.myContacts.get(position);
+        }
+        return null;
+    }
+
     public void printContacts() {
         System.out.println("ContactBook List");
         for (int i = 0; i < this.myContacts.size(); i++) {
@@ -41,4 +73,5 @@ public class AddressBook {
                     "\n PhoneNumber:\t" + this.myContacts.get(i).getPhoneNumber());
         }
     }
+
 }
