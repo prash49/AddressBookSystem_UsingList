@@ -8,11 +8,9 @@ public class AddressBookMain {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         boolean quit = false;
+        printActions();
         while (!quit) {
-            System.out.println("Enter 0 to quit the AddressBook system ");
-            System.out.println("Enter 1 to add New contacts");
-            System.out.println("enter 2 to  display contacts");
-            System.out.println("Enter 3 to edit existing contact");
+            System.out.println("Enter 5 to print actions");
             int action = scanner.nextInt();
             switch (action) {
                 case 0:
@@ -28,10 +26,41 @@ public class AddressBookMain {
                 case 3:
                     updateContact();
                     break;
+                case 4:
+                    deleteContact();
+                case 5:
+                    printActions();
+                    break;
                 default:
                     System.out.println("Enter right choice");
             }
         }
+    }
+
+    private static void deleteContact() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter existing contact firstName:");
+        String searchName = scanner.nextLine();
+        ContactBook existingContactRecord = addressBook.queryContact(searchName);
+        if (existingContactRecord == null) {
+            System.out.println("Contact Not Found");
+            return;
+        }
+        if (addressBook.removeContact(existingContactRecord)) {
+            System.out.println(searchName + " is deleted successfully");
+        } else {
+            System.out.println("Error in deleting the contact");
+        }
+    }
+
+
+    public static void printActions() {
+        System.out.println("Enter 0 to quit the AddressBook system ");
+        System.out.println("Enter 1 to add New contacts");
+        System.out.println("enter 2 to  display contacts");
+        System.out.println("Enter 3 to edit existing contact");
+        System.out.println("Enter 4 to edit delete existing contact");
+        System.out.println("Enter 5 to print actions");
     }
 
     private static void addNewContact() {
