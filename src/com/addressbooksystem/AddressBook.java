@@ -64,13 +64,13 @@ public class AddressBook {
         System.out.println("ContactBook List");
         for (int i = 0; i < this.myContacts.size(); i++) {
             System.out.println((i + 1) + "." +
-                    "firstName:\t" + this.myContacts.get(i).getFirstName() +
-                    "\nLastName:\t" + this.myContacts.get(i).getLastName() +
-                    "\n Address:\t" + this.myContacts.get(i).getAddress() +
-                    "\n City:\t" + this.myContacts.get(i).getCity() +
-                    "\n State:\t" + this.myContacts.get(i).getState() +
-                    "\n zipCode:\t" + this.myContacts.get(i).getZip() +
-                    "\n PhoneNumber:\t" + this.myContacts.get(i).getPhoneNumber());
+                    "firstName:" + this.myContacts.get(i).getFirstName() +
+                    "\tLastName: " + this.myContacts.get(i).getLastName() +
+                    "\n Address: " + this.myContacts.get(i).getAddress() +
+                    "\t City: " + this.myContacts.get(i).getCity() +
+                    "\t State: " + this.myContacts.get(i).getState() +
+                    "\t zipCode: " + this.myContacts.get(i).getZip() +
+                    "\n PhoneNumber: " + this.myContacts.get(i).getPhoneNumber());
         }
     }
 

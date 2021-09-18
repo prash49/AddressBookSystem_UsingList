@@ -3,6 +3,7 @@ package com.addressbooksystem;
 import java.util.Scanner;
 
 public class AddressBookMain {
+    static Scanner scanner = new Scanner(System.in);
     private static AddressBook addressBook = new AddressBook("addressBook");
 
     public static void main(String[] args) {
@@ -10,7 +11,7 @@ public class AddressBookMain {
         boolean quit = false;
         printActions();
         while (!quit) {
-            System.out.println("Enter 5 to print actions");
+            System.out.println("Enter 6 to print actions");
             int action = scanner.nextInt();
             switch (action) {
                 case 0:
@@ -29,11 +30,23 @@ public class AddressBookMain {
                 case 4:
                     deleteContact();
                 case 5:
+                    addMultipleContact();
+                    break;
+                case 6:
                     printActions();
                     break;
                 default:
                     System.out.println("Enter right choice");
             }
+        }
+    }
+
+    private static void addMultipleContact() {
+        System.out.println("Enter Number of Contacts to Add into Contact Book");
+        int number = scanner.nextInt();
+        for (int i = 0; i < number; i++) {
+            addNewContact();
+            System.out.println(i + 1 + " Contact added Successfully.. ");
         }
     }
 
@@ -55,12 +68,13 @@ public class AddressBookMain {
 
 
     public static void printActions() {
-        System.out.println("Enter 0 to quit the AddressBook system ");
-        System.out.println("Enter 1 to add New contacts");
-        System.out.println("enter 2 to  display contacts");
-        System.out.println("Enter 3 to edit existing contact");
-        System.out.println("Enter 4 to edit delete existing contact");
-        System.out.println("Enter 5 to print actions");
+        System.out.println(" 0 -> Quit the AddressBook system ");
+        System.out.println(" 1 -> Add New contacts");
+        System.out.println(" 2 -> View contacts");
+        System.out.println(" 3 -> Edit  contact");
+        System.out.println(" 4 ->  Delete contact");
+        System.out.println(" 5 -> Add Multiple Contact");
+        System.out.println(" 6 -> Print actions");
     }
 
     private static void addNewContact() {
